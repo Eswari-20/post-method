@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+
+		body{
+			background-image: url(https://trbahadurpur.com/wp-content/uploads/2021/01/background-20.jpg);
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function store(){
+			var firstname=document.getElementById("firstname").value
+			console.log(firstname)
+			var password=document.getElementById("password").value
+			console.log(password)
+		fetch("http://localhost:3000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:firstname,password:password})
+		
+		
+			})
+		.then((res)=>{
+			console.log(res)
+			if(res.status==200)
+				alert("registration successful")
+		})
+		.catch((err)=>{
+			alert(err)
+		})
+		}
+	</script>
+	<div>
+	<p><input placeholder="Enter your name" id="firstname"/></p>
+	<p><input placeholder="Enter your password" id="password"/></p>
+		<button onclick="store()">submit</button>
+	</div>
+</body>
+</html>
