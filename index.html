@@ -5,9 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style type="text/css">
-
+		.sec{
+			padding: 1%;
+			margin: 40%;
+		}
 		body{
-			background-image: url(https://trbahadurpur.com/wp-content/uploads/2021/01/background-20.jpg);
+			background-image: url("https://cdn.pixabay.com/photo/2021/06/29/06/14/water-drops-6373296__340.jpg");
+			
+			background-repeat: no-repeat;
+			background-position: center;
+			background-attachment: fixed;
+			background-size: 100% 100%;	
 		}
 	</style>
 </head>
@@ -18,13 +26,25 @@
 			console.log(firstname)
 			var password=document.getElementById("password").value
 			console.log(password)
+			var select=document.getElementById("select").value
+			console.log(select)
+			var gmale=document.getElementById("male")
+			console.log(male)
+			var gfemale=document.getElementById("female")
+			console.log(female)
+			var gmale=document.getElementById("male").checked
+			var gfemale=document.getElementById("female").checked
+
+			if(gmale==true)var gender="male"
+				else var gender="female"
+			console.log("gender")
 		fetch("http://localhost:3000/newData",{
 			method:"POST",
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:firstname,password:password})
-		
+			body:JSON.stringify({name:firstname,password:password, cors:select})
+			
 		
 			})
 		.then((res)=>{
@@ -37,10 +57,23 @@
 		})
 		}
 	</script>
-	<div>
+
+	<div class="sec">
+
 	<p><input placeholder="Enter your name" id="firstname"/></p>
 	<p><input placeholder="Enter your password" id="password"/></p>
-		<button onclick="store()">submit</button>
+	
+		<select id="select">
+		<br><option>Select gender<option></br>
+		<option>Male<option>
+			<option>female<option>
+				<p><input type="radio" name="gender" id="male"/>male</p>
+				<p><input type="radio" name="gender" id="female"/>female</p>
+			</select>
+		<br><button onclick="store()">submit</button><br>
+
 	</div>
 </body>
 </html>
+
+
